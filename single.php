@@ -12,8 +12,11 @@
             <?php if(function_exists('get_field')) {
                 $before_content = get_field('before_content');
                 if($before_content != '') { 
-                    
-                    echo '<div class="col-lg-8 offset-lg-2 mb-0 pb-1 pr-5 pl-5 text-center">';
+                    $col = 'col-lg-8 offset-lg-2';
+                    if(get_post_type() == 'project') {
+                        $col = 'col-lg-12';
+                    }
+                    echo '<div class="'.$col.' mb-0 pb-1 pr-5 pl-5 text-center">';
                         echo $before_content;
                     echo '</div>';
                 }
@@ -38,7 +41,11 @@
                         <div class="mt-4 border-top"></div>
                     </div>
                 <?php 
-                    echo '<div class="col-lg-8 offset-lg-2 mb-5 pb-5 pr-5 pl-5 after-content">';
+                $col = 'col-lg-8 offset-lg-2 pr-5 pl-5';
+                if(get_post_type() == 'project') {
+                    $col = 'col-lg-10 offset-lg-1 ';
+                }
+                    echo '<div class="'.$col.' mb-5 pb-5  after-content">';
                         echo $after_content;
                     echo '</div>';
                 }

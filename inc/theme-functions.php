@@ -134,7 +134,7 @@ function gregg_portfolio($category,$max, $view_all = true) {
                     $post_id = get_the_ID();
                     $bg = get_post_meta($post_id,'project_background_image_id',true);
                     $bg_image = wp_get_attachment_image_src($bg,'full');
-                    echo '<div class="portfolio-container col-sm-12 col-md-6 col-lg-3">';
+                    echo '<div class="portfolio-container text-center col-sm-12 col-md-6 col-lg-3">';
                         echo '<div data-background-image="'.$bg_image[0].'" class="lozad project '.get_post_meta($post_id,'project-classes',true).'">';
                             echo '<div class="brand">';
                                 if(has_post_thumbnail()) {
