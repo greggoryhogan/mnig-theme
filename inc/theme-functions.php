@@ -138,7 +138,7 @@ function gregg_portfolio($category,$max, $view_all = true) {
                         echo '<div data-background-image="'.$bg_image[0].'" class="lozad project '.get_post_meta($post_id,'project-classes',true).'">';
                             echo '<div class="brand">';
                                 if(has_post_thumbnail()) {
-                                    echo get_the_post_thumbnail( $page->ID, 'full',array( 'class' => 'lozad' ) );
+                                    echo get_the_post_thumbnail( $page->ID, 'full',array( 'loading' =>'lazy' ) );
                                 } else {
                                     echo '<h3>'.get_the_title().'</h3>';
                                 }
@@ -341,8 +341,8 @@ function save_client_logo_js() {
  * Make featured images lazy load
  * 
  */ 
-add_filter( 'post_thumbnail_html', 'add_image_placeholders', 11 );
-add_filter( 'the_content', 'add_image_placeholders', 99 );
+//add_filter( 'post_thumbnail_html', 'add_image_placeholders', 11 );
+//add_filter( 'the_content', 'add_image_placeholders', 99 );
 function add_image_placeholders( $content ) {
 	// Don't lazyload for feeds, previews, mobile
 	if( is_feed() || is_preview())
@@ -403,4 +403,4 @@ remove_filter( 'the_content', 'wp_make_content_images_responsive' );
 /*
  * Remove default wp lazy loading since we already sue lozad
  */
-add_filter( 'wp_lazy_loading_enabled', '__return_false' ); 
+//add_filter( 'wp_lazy_loading_enabled', '__return_false' ); 
